@@ -1,0 +1,18 @@
+﻿<div class="movein-popover-block" @onmouseenter="@MouseMoveIn" @onmouseleave="@MouseMoveOut" @onclick="@MouseClickEvent" >
+	@if(HeadContent is null)
+	{
+		<div class="default-head-block">
+			<i class="fa fa-user fa-2x"></i>
+		</div>
+	}
+	else
+	{
+		@HeadContent
+	}
+
+	<div class="popover-block" @attributes="@AdditionalAttributes">
+		<div class="d-flex user-define-block">
+			@PopoverContent
+		</div>
+	</div>
+</div>
