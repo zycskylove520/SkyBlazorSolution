@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkyBlazor", "SkyBlazor\SkyBlazor.csproj", "{690C7741-4A4C-48E0-96DF-B19BB617D638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkyBlazor", "SkyBlazor\SkyBlazor.csproj", "{690C7741-4A4C-48E0-96DF-B19BB617D638}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkyCV", "..\SkyCVSolution\SkyCV\SkyCV.csproj", "{A1C07C04-AAFE-4A91-890A-E8B1D8E65922}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{690C7741-4A4C-48E0-96DF-B19BB617D638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{690C7741-4A4C-48E0-96DF-B19BB617D638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{690C7741-4A4C-48E0-96DF-B19BB617D638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C07C04-AAFE-4A91-890A-E8B1D8E65922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C07C04-AAFE-4A91-890A-E8B1D8E65922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C07C04-AAFE-4A91-890A-E8B1D8E65922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C07C04-AAFE-4A91-890A-E8B1D8E65922}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

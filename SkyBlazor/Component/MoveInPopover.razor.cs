@@ -25,7 +25,6 @@ namespace SkyBlazor.Component
 		// 摘要:
 		//		设置移入框部件
 		[Parameter]
-		[NotNull]
 		public RenderFragment? HeadContent { get; set; }
 
 		//
@@ -49,26 +48,35 @@ namespace SkyBlazor.Component
 
 		public async Task MouseMoveIn()
 		{
-			await module!.InvokeVoidAsync("AutoPopoverLocateShow", PopDirection);
+			if (module != null)
+			{
+                await module.InvokeVoidAsync("AutoPopoverLocateShow", PopDirection);
+            }
+			else
+			{
+				throw new NullReferenceException();
+			}
 		}
 
 		public async Task MouseMoveOut()
 		{
-			await module!.InvokeVoidAsync("AutoPopoverLocateHidden", null);
-		}
-
-		protected override Task OnInitializedAsync()
-		{
-			return base.OnInitializedAsync();
-		}
+			if (module != null)
+			{
+				await module.InvokeVoidAsync("AutoPopoverLocateHidden", null);
+			}
+			else
+			{
+				throw new NullReferenceException();
+			}
+        }
 
 		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
 			if (firstRender)
 			{
-				module = await JS.InvokeAsync<IJSObjectReference>("import", "../Common/MoveInPopover.razor.js");
-				await base.OnAfterRenderAsync(firstRender);
+				module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/SkyBlazor/js/Component/MoveInPopover.js");
 			}
-		}
+            await base.OnAfterRenderAsync(firstRender);
+        }
 	}
 }

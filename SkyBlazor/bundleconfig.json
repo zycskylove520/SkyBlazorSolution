@@ -1,8 +1,12 @@
 [
   {
-    "outputFileName": "wwwroot/js/SkyBlazor.bundle.min.js",
+    "outputFileName": "wwwroot/css/SkyBlazor.bundle.min.css",
     "inputFiles": [
-      "Component/*.js"
-    ]
+      "Component/*.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "commentMode": "all"
+    }
   }
 ]
