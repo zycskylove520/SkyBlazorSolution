@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageId>SkyBlazor</PackageId>
     <Title>SkyBlazor</Title>
-    <Version>7.0.2</Version>
+    <Version>7.0.4</Version>
     <Authors>ZYCSky</Authors>
     <Company>None</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -14,6 +14,7 @@
     <PackageProjectUrl>https://github.com/zycskylove520</PackageProjectUrl>
     <RepositoryUrl>https://github.com/zycskylove520</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,10 +40,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
 </Project>

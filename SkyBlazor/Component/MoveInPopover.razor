@@ -1,5 +1,5 @@
-﻿<div class="movein-popover-block" @onmouseenter="@MouseMoveIn" @onmouseleave="@MouseMoveOut" @onclick="@MouseClickEvent" >
-	@if(HeadContent is null)
+﻿<div class="movein-popover-block" @onmouseenter="@MouseMoveIn" @onmouseleave="@MouseMoveOut" @onclick="@_mouseClickEvent">
+	@if (MoveInContent is null)
 	{
 		<div class="default-head-block">
 			<i class="fa fa-user fa-2x"></i>
@@ -7,7 +7,7 @@
 	}
 	else
 	{
-		@HeadContent
+		@MoveInContent
 	}
 
 	<div class="popover-block" @attributes="@AdditionalAttributes">

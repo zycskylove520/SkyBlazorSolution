@@ -72,7 +72,6 @@
                 popoverBlockStyle.right = 0;
                 popoverBlockStyle.top = "100%";
                 userDefineBlock.style.flexDirection = "column";
-
             }
         }
     }
@@ -80,7 +79,7 @@
         userDefineBlock.style.flexDirection = "column-reverse";
         let [offsetTop, offsetLeft] = GetOffsetByBody(popoverBlock);
         let offsetRight = currentClientWidth - offsetLeft - popoverBlock.offsetWidth;
-        
+
         if (offsetRight < 0 && offsetLeft > 0) {
             popoverBlockStyle.bottom = "100%";
             popoverBlockStyle.right = 0;
@@ -130,6 +129,6 @@ function GetOffsetByBody(element) {
         offsetLeft += element.offsetLeft;
         element = element.offsetParent;
     }
-    
+
     return [offsetTop, offsetLeft];
 }
