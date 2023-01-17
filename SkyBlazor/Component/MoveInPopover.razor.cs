@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
+using SkyBlazor.Core;
 using System.Diagnostics.CodeAnalysis;
 
 namespace SkyBlazor.Component
@@ -8,12 +9,20 @@ namespace SkyBlazor.Component
 	/// <summary>
 	/// 移入弹窗组件，当鼠标进入移入框时会自动弹出弹出框
 	/// </summary>
-	public partial class MoveInPopover
+	[JSInject("./_content/SkyBlazor/js/Component/MoveInPopover.js")]
+	public partial class MoveInPopover : SkyBlazorComponentBase
 	{
-		[Inject]
-		private IJSRuntime JS { get; set; } = default!;
-
-		private IJSObjectReference? module;
+		protected override string ClassCssValue
+		{
+			set
+			{
+				ClassCssValue = value;
+			}
+			get
+			{
+				return ClassCSSProcessor.Default("popover-block").AddFromAdditionalAttributes(AdditionalAttributes).Get();
+			}
+		}
 
 		/// <summary>
 		/// 当前弹出框状态是否弹出
@@ -26,6 +35,7 @@ namespace SkyBlazor.Component
 		/// </summary>
 		[Parameter]
 		public bool IsAutoPopUp { get; set; }
+
 		private bool _isAutoPopUp = true;
 
 		/// <summary>
@@ -75,17 +85,12 @@ namespace SkyBlazor.Component
 		public RenderFragment? PopoverContent { get; set; }
 
 		/// <summary>
-		///  为弹出框添加额外添加额外自定义属性
-		/// </summary>
-		[Parameter(CaptureUnmatchedValues = true)]
-		public IDictionary<string, object>? AdditionalAttributes { get; set; }
-
-		/// <summary>
 		/// 为移入框设置的点击事件
 		/// 一旦设置了自定义的点击事件，那么弹出框的弹出方式会自动变为移入弹出
 		/// </summary>
 		[Parameter]
 		public EventCallback<MouseEventArgs> MouseClickEvent { get; set; }
+
 		private EventCallback<MouseEventArgs> _mouseClickEvent;
 
 		/// <summary>
@@ -97,9 +102,9 @@ namespace SkyBlazor.Component
 		{
 			if (_isAutoPopUp)
 			{
-				if (module != null)
+				if (Module != null)
 				{
-					await module.InvokeVoidAsync("AutoPopoverLocateShow", PopDirection);
+					await Module.InvokeVoidAsync("AutoPopoverLocateShow", PopDirection);
 					_isPopState = true;
 				}
 				else
@@ -122,9 +127,9 @@ namespace SkyBlazor.Component
 		{
 			if (_isAutoPopUp)
 			{
-				if (module != null)
+				if (Module != null)
 				{
-					await module.InvokeVoidAsync("AutoPopoverLocateHidden", null);
+					await Module.InvokeVoidAsync("AutoPopoverLocateHidden", null);
 					_isPopState = false;
 				}
 				else
@@ -149,9 +154,9 @@ namespace SkyBlazor.Component
 			{
 				if (_isPopState)
 				{
-					if (module != null)
+					if (Module != null)
 					{
-						await module.InvokeVoidAsync("AutoPopoverLocateHidden", null);
+						await Module.InvokeVoidAsync("AutoPopoverLocateHidden", null);
 						_isPopState = false;
 					}
 					else
@@ -161,9 +166,9 @@ namespace SkyBlazor.Component
 				}
 				else
 				{
-					if (module != null)
+					if (Module != null)
 					{
-						await module.InvokeVoidAsync("AutoPopoverLocateShow", PopDirection);
+						await Module.InvokeVoidAsync("AutoPopoverLocateShow", PopDirection);
 						_isPopState = true;
 					}
 					else
@@ -203,20 +208,6 @@ namespace SkyBlazor.Component
 				}
 			}
 			await base.SetParametersAsync(parameters);
-		}
-
-		/// <summary>
-		/// 导入js
-		/// </summary>
-		/// <param name="firstRender"></param>
-		/// <returns></returns>
-		protected override async Task OnAfterRenderAsync(bool firstRender)
-		{
-			if (firstRender)
-			{
-				module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/SkyBlazor/js/Component/MoveInPopover.js");
-			}
-			await base.OnAfterRenderAsync(firstRender);
 		}
 	}
 }

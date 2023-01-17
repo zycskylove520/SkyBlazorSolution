@@ -1,4 +1,6 @@
-﻿<div class="movein-popover-block" @onmouseenter="@MouseMoveIn" @onmouseleave="@MouseMoveOut" @onclick="@_mouseClickEvent">
+﻿@inherits SkyBlazorComponentBase
+
+<div class="movein-popover-block" @onmouseenter="@MouseMoveIn" @onmouseleave="@MouseMoveOut" @onclick="@_mouseClickEvent">
 	@if (MoveInContent is null)
 	{
 		<div class="default-head-block">
@@ -10,7 +12,7 @@
 		@MoveInContent
 	}
 
-	<div class="popover-block" @attributes="@AdditionalAttributes">
+	<div @attributes="@AdditionalAttributes" class="@ClassCssValue">
 		<div class="d-flex user-define-block">
 			@PopoverContent
 		</div>

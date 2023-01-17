@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageId>SkyBlazor</PackageId>
     <Title>SkyBlazor</Title>
-    <Version>7.0.4</Version>
+    <Version>7.0.5</Version>
     <Authors>ZYCSky</Authors>
     <Company>None</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
